@@ -28,7 +28,7 @@ https://github.com/googleapis/google-api-php-client-services/tree/master/src/Goo
 
 ### Get API Credentials
 from https://developers.google.com/console  
-Enable `Google Search Console API`, ` People API`.
+Enable `Google Search Console API`.
 
 ### publish config file
 ```
