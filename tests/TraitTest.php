@@ -18,16 +18,18 @@ class TraitTest extends TestCase
     {
         SearchConsole::shouldReceive('setAccessToken')->with('test')->once()->andReturn(m::self());
 
-        $sc = (new class
-        {
-            use SearchConsoleTrait;
-
-            public function tokenForSearchConsole()
-            {
-                return 'test';
-            }
-        })->searchconsole();
+        $sc = (new User())->searchconsole();
 
         $this->assertNotNull($sc);
+    }
+}
+
+class User
+{
+    use SearchConsoleTrait;
+
+    public function tokenForSearchConsole()
+    {
+        return 'test';
     }
 }
