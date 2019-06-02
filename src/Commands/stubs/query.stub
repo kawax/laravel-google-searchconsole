@@ -1,0 +1,13 @@
+<?php
+
+namespace DummyNamespace;
+
+use Revolution\Google\SearchConsole\Query\AbstractQuery;
+
+class DummyClass extends AbstractQuery
+{
+    public function init()
+    {
+        //
+    }
+}
