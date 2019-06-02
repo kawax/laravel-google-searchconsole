@@ -1,5 +1,9 @@
 # Google SearchConsole API for Laravel
 
+[![Build Status](https://travis-ci.com/kawax/laravel-google-searchconsole.svg?token=wkkMzzpvNjzrZivG4aGb&branch=master)](https://travis-ci.com/kawax/laravel-google-searchconsole)
+[![Maintainability](https://api.codeclimate.com/v1/badges/74439a91df19143ff593/maintainability)](https://codeclimate.com/github/kawax/laravel-google-searchconsole/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/74439a91df19143ff593/test_coverage)](https://codeclimate.com/github/kawax/laravel-google-searchconsole/test_coverage)
+
 
 https://developers.google.com/webmaster-tools/search-console-api-original/
 
