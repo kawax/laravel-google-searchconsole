@@ -29,9 +29,7 @@ class SearchConsoleServiceProvider extends ServiceProvider implements Deferrable
      */
     public function register()
     {
-        $this->app->singleton(Factory::class, function ($app) {
-            return new SearchConsoleClient();
-        });
+        $this->app->singleton(Factory::class, SearchConsoleClient::class);
     }
 
     /**
