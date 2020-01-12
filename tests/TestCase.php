@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Revolution\Google\SearchConsole\Tests;
 
 use Revolution\Google\SearchConsole\Providers\SearchConsoleServiceProvider;
 use Revolution\Google\SearchConsole\Facades\SearchConsole;

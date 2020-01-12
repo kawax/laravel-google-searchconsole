@@ -23,7 +23,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Tests\\": "tests/"
+      "Revolution\\Google\\SearchConsole\\Tests\\": "tests/"
     }
   },
   "authors": [

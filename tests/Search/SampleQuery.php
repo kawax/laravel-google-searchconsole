@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Search;
+namespace Revolution\Google\SearchConsole\Tests\Search;
 
 use Revolution\Google\SearchConsole\Query\AbstractQuery;
 

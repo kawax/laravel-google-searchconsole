@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Revolution\Google\SearchConsole\Tests;
 
 use Mockery as m;
 
