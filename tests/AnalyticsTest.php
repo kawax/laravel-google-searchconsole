@@ -2,12 +2,11 @@
 
 namespace Revolution\Google\SearchConsole\Tests;
 
-use Mockery as m;
-
-use Revolution\Google\SearchConsole\SearchConsoleClient;
-use Revolution\Google\SearchConsole\Tests\Search\SampleQuery;
 use Google_Service_Webmasters;
 use Google_Service_Webmasters_Resource_Searchanalytics as Searchanalytics;
+use Mockery as m;
+use Revolution\Google\SearchConsole\SearchConsoleClient;
+use Revolution\Google\SearchConsole\Tests\Search\SampleQuery;
 
 class AnalyticsTest extends TestCase
 {

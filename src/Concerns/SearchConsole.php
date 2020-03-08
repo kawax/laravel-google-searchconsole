@@ -6,7 +6,7 @@ use Illuminate\Container\Container;
 use Revolution\Google\SearchConsole\Contracts\Factory;
 
 /**
- * use at User or another model
+ * use at User or another model.
  */
 trait SearchConsole
 {
@@ -21,7 +21,7 @@ trait SearchConsole
     }
 
     /**
-     * Get the Access Token
+     * Get the Access Token.
      *
      * @return string|array
      */

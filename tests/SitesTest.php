@@ -2,12 +2,10 @@
 
 namespace Revolution\Google\SearchConsole\Tests;
 
-use Mockery as m;
-
-use Revolution\Google\SearchConsole\SearchConsoleClient;
-
 use Google_Service_Webmasters;
 use Google_Service_Webmasters_Resource_Sites as Sites;
+use Mockery as m;
+use Revolution\Google\SearchConsole\SearchConsoleClient;
 
 class SitesTest extends TestCase
 {

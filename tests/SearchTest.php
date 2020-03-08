@@ -3,9 +3,8 @@
 namespace Revolution\Google\SearchConsole\Tests;
 
 use Mockery as m;
-
-use Revolution\Google\SearchConsole\Facades\SearchConsole;
 use PulkitJalan\Google\Client;
+use Revolution\Google\SearchConsole\Facades\SearchConsole;
 use Revolution\Google\SearchConsole\SearchConsoleClient;
 
 class SearchTest extends TestCase

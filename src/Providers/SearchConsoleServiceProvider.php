@@ -2,11 +2,11 @@
 
 namespace Revolution\Google\SearchConsole\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Support\DeferrableProvider;
+use Illuminate\Support\ServiceProvider;
+use Revolution\Google\SearchConsole\Commands\QueryMakeCommand;
 use Revolution\Google\SearchConsole\Contracts\Factory;
 use Revolution\Google\SearchConsole\SearchConsoleClient;
-use Revolution\Google\SearchConsole\Commands\QueryMakeCommand;
 
 class SearchConsoleServiceProvider extends ServiceProvider implements DeferrableProvider
 {

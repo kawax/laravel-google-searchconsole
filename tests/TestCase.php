@@ -2,11 +2,10 @@
 
 namespace Revolution\Google\SearchConsole\Tests;
 
-use Revolution\Google\SearchConsole\Providers\SearchConsoleServiceProvider;
-use Revolution\Google\SearchConsole\Facades\SearchConsole;
-
-use PulkitJalan\Google\GoogleServiceProvider;
 use PulkitJalan\Google\Facades\Google;
+use PulkitJalan\Google\GoogleServiceProvider;
+use Revolution\Google\SearchConsole\Facades\SearchConsole;
+use Revolution\Google\SearchConsole\Providers\SearchConsoleServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {

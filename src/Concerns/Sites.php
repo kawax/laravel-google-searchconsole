@@ -7,7 +7,7 @@ use Google_Service_Webmasters_Resource_Sites;
 trait Sites
 {
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function listSites($optParams = [])
     {
