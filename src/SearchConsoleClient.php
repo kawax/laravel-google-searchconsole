@@ -3,9 +3,9 @@
 namespace Revolution\Google\SearchConsole;
 
 use Google_Service_Webmasters;
-use PulkitJalan\Google\Client;
 use Illuminate\Container\Container;
 use Illuminate\Support\Traits\Macroable;
+use PulkitJalan\Google\Client;
 use Revolution\Google\SearchConsole\Contracts\Factory;
 
 class SearchConsoleClient implements Factory
@@ -39,7 +39,7 @@ class SearchConsoleClient implements Factory
     }
 
     /**
-     * set access_token and set new service
+     * set access_token and set new service.
      *
      * @param  string|array  $token
      * @return $this

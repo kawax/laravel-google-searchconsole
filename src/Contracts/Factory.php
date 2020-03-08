@@ -26,7 +26,7 @@ interface Factory
     public function getService(): Google_Service_Webmasters;
 
     /**
-     * set access_token and set new service
+     * set access_token and set new service.
      *
      * @param  string|array  $token
      * @return $this
