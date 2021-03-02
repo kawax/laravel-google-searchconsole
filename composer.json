@@ -7,17 +7,11 @@
     "laravel"
   ],
   "license": "MIT",
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/kawax/google-apiclient"
-    }
-  ],
   "require": {
     "php": "^7.3||^8.0",
     "illuminate/container": "*",
     "illuminate/support": "*",
-    "pulkitjalan/google-apiclient": "dev-patch"
+    "google/apiclient": "^2.9"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.0",
@@ -26,7 +20,8 @@
   },
   "autoload": {
     "psr-4": {
-      "Revolution\\Google\\SearchConsole\\": "src/"
+      "Revolution\\Google\\SearchConsole\\": "src/",
+      "PulkitJalan\\Google\\": "lib/google-apiclient/src"
     }
   },
   "autoload-dev": {
@@ -43,7 +38,8 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Revolution\\Google\\SearchConsole\\Providers\\SearchConsoleServiceProvider"
+        "Revolution\\Google\\SearchConsole\\Providers\\SearchConsoleServiceProvider",
+        "PulkitJalan\\Google\\GoogleServiceProvider"
       ],
       "aliases": {
         "SearchConsole": "Revolution\\Google\\SearchConsole\\Facades\\SearchConsole"
