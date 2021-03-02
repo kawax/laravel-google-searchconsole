@@ -8,7 +8,7 @@
 https://developers.google.com/webmaster-tools/search-console-api-original/
 
 ## Requirements
-- PHP >= 7.2
+- PHP >= 7.3
 - Laravel >= 6.0
 
 ## Versioning
