@@ -9,9 +9,10 @@
   "license": "MIT",
   "require": {
     "php": "^7.3||^8.0",
-    "illuminate/container": "*",
-    "illuminate/support": "*",
-    "google/apiclient": "^2.9"
+    "illuminate/container": "^6.0||^7.0||^8.0",
+    "illuminate/support": "^6.0||^7.0||^8.0",
+    "google/apiclient": "^2.9",
+    "pulkitjalan/google-apiclient": "^4.1@dev"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.0",
@@ -20,8 +21,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Revolution\\Google\\SearchConsole\\": "src/",
-      "PulkitJalan\\Google\\": "lib/google-apiclient/src"
+      "Revolution\\Google\\SearchConsole\\": "src/"
     }
   },
   "autoload-dev": {
@@ -38,8 +38,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Revolution\\Google\\SearchConsole\\Providers\\SearchConsoleServiceProvider",
-        "PulkitJalan\\Google\\GoogleServiceProvider"
+        "Revolution\\Google\\SearchConsole\\Providers\\SearchConsoleServiceProvider"
       ],
       "aliases": {
         "SearchConsole": "Revolution\\Google\\SearchConsole\\Facades\\SearchConsole"
