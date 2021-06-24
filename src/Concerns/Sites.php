@@ -2,8 +2,6 @@
 
 namespace Revolution\Google\SearchConsole\Concerns;
 
-use Google_Service_Webmasters_Resource_Sites;
-
 trait Sites
 {
     /**
@@ -15,7 +13,7 @@ trait Sites
     }
 
     /**
-     * @return Google_Service_Webmasters_Resource_Sites
+     * @return \Google\Service\Webmasters\Resource\Sites
      */
     protected function serviceSites()
     {

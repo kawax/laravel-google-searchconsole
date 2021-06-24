@@ -2,7 +2,8 @@
 
 namespace Revolution\Google\SearchConsole;
 
-use Google_Service_Webmasters;
+use Google\Service;
+use Google\Service\Webmasters;
 use Illuminate\Container\Container;
 use Illuminate\Support\Traits\Macroable;
 use PulkitJalan\Google\Client;
@@ -15,12 +16,13 @@ class SearchConsoleClient implements Factory
     use Macroable;
 
     /**
-     * @var Google_Service_Webmasters
+     * @var Webmasters
      */
     protected $service;
 
     /**
-     * @param  Google_Service_Webmasters|\Google_Service  $service
+     * @param  Webmasters|Service  $service
+     *
      * @return $this
      */
     public function setService($service)
@@ -31,9 +33,9 @@ class SearchConsoleClient implements Factory
     }
 
     /**
-     * @return Google_Service_Webmasters
+     * @return Webmasters
      */
-    public function getService(): Google_Service_Webmasters
+    public function getService(): Webmasters
     {
         return $this->service;
     }
@@ -42,6 +44,7 @@ class SearchConsoleClient implements Factory
      * set access_token and set new service.
      *
      * @param  string|array  $token
+     *
      * @return $this
      * @throws \Exception
      */

@@ -2,15 +2,15 @@
 
 namespace Revolution\Google\SearchConsole\Concerns;
 
-use Google_Service_Webmasters_Resource_Searchanalytics;
-use Google_Service_Webmasters_SearchAnalyticsQueryRequest as QueryRequest;
+use Google\Service\Webmasters\SearchAnalyticsQueryRequest;
 use Revolution\Google\SearchConsole\Contracts\Query;
 
 trait SearchAnalytics
 {
     /**
      * @param  string  $url
-     * @param  Query|QueryRequest  $query
+     * @param  Query|SearchAnalyticsQueryRequest  $query
+     *
      * @return object
      */
     public function query(string $url, $query)
@@ -19,7 +19,7 @@ trait SearchAnalytics
     }
 
     /**
-     * @return Google_Service_Webmasters_Resource_Searchanalytics
+     * @return \Google\Service\Webmasters\Resource\Searchanalytics
      */
     protected function serviceSearchAnalytics()
     {

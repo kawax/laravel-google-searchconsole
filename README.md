@@ -45,7 +45,7 @@ php artisan vendor:publish --provider="PulkitJalan\Google\GoogleServiceProvider"
     'client_id'        => env('GOOGLE_CLIENT_ID', ''),
     'client_secret'    => env('GOOGLE_CLIENT_SECRET', ''),
     'redirect_uri'     => env('GOOGLE_REDIRECT', ''),
-    'scopes'           => [\Google_Service_Webmasters::WEBMASTERS],
+    'scopes'           => [\Google\Service\Webmasters::WEBMASTERS],
     'access_type'      => 'offline',
     'approval_prompt'  => 'force',
     'prompt'           => 'consent', //"none", "consent", "select_account" default:none
@@ -81,7 +81,7 @@ Or another Google API Series.
 - https://github.com/kawax/laravel-google-photos
 
 ## Query class
-Subclass of Google_Service_Webmasters_SearchAnalyticsQueryRequest.
+Subclass of Google\Service\Webmasters\SearchAnalyticsQueryRequest.
 
 ### Make command
 Create at `app/Search`
