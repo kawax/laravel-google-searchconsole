@@ -25,6 +25,5 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          workingDirectory: update/
           coverageCommand: vendor/bin/phpunit
           coverageLocations: build/logs/clover.xml:clover
