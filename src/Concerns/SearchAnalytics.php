@@ -10,7 +10,6 @@ trait SearchAnalytics
     /**
      * @param  string  $url
      * @param  Query|SearchAnalyticsQueryRequest  $query
-     *
      * @return object
      */
     public function query(string $url, $query)
