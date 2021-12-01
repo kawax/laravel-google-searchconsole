@@ -7,6 +7,7 @@ use Revolution\Google\SearchConsole\Contracts\Factory;
 
 /**
  * @method static Factory setAccessToken($token)
+ *
  * @see \Revolution\Google\SearchConsole\SearchConsoleClient
  */
 class SearchConsole extends Facade

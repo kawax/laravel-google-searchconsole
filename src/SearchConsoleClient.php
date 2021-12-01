@@ -22,7 +22,6 @@ class SearchConsoleClient implements Factory
 
     /**
      * @param  Webmasters|Service  $service
-     *
      * @return $this
      */
     public function setService($service)
@@ -44,8 +43,8 @@ class SearchConsoleClient implements Factory
      * set access_token and set new service.
      *
      * @param  string|array  $token
-     *
      * @return $this
+     *
      * @throws \Exception
      */
     public function setAccessToken($token)
