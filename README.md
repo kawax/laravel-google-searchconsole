@@ -8,8 +8,8 @@
 https://developers.google.com/webmaster-tools/search-console-api-original/
 
 ## Requirements
-- PHP >= 8.0
-- Laravel >= 9.0
+- PHP >= 8.1
+- Laravel >= 10.0
 
 ## Versioning
 - Basic : semver
