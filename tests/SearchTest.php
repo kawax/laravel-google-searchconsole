@@ -25,6 +25,8 @@ class SearchTest extends TestCase
     public function tearDown(): void
     {
         m::close();
+
+        parent::tearDown();
     }
 
     public function testInstance()

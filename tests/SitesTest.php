@@ -12,6 +12,8 @@ class SitesTest extends TestCase
     public function tearDown(): void
     {
         m::close();
+
+        parent::tearDown();
     }
 
     public function testListSites()
