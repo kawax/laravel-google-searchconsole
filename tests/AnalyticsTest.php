@@ -20,7 +20,7 @@ class AnalyticsTest extends TestCase
     public function testQuery()
     {
         $sc = m::mock(SearchConsoleClient::class)->makePartial()->shouldAllowMockingProtectedMethods();
-        $sc->shouldReceive('serviceSearchAnalytics->query->toSimpleObject')->andReturn((object)['test' => 'test']);
+        $sc->shouldReceive('serviceSearchAnalytics->query->toSimpleObject')->andReturn((object) ['test' => 'test']);
 
         $url = '';
         $query = new SampleQuery();
