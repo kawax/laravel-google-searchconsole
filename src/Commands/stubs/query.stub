@@ -6,7 +6,7 @@ use Revolution\Google\SearchConsole\Query\AbstractQuery;
 
 class DummyClass extends AbstractQuery
 {
-    public function init()
+    public function init(): void
     {
         //
     }

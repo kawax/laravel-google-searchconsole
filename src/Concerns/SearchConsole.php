@@ -3,6 +3,7 @@
 namespace Revolution\Google\SearchConsole\Concerns;
 
 use Illuminate\Container\Container;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Revolution\Google\SearchConsole\Contracts\Factory;
 
 /**
@@ -11,9 +12,9 @@ use Revolution\Google\SearchConsole\Contracts\Factory;
 trait SearchConsole
 {
     /**
-     * @return Factory
+     * @throws BindingResolutionException
      */
-    public function searchconsole()
+    public function searchconsole(): Factory
     {
         $token = $this->tokenForSearchConsole();
 
@@ -22,8 +23,6 @@ trait SearchConsole
 
     /**
      * Get the Access Token.
-     *
-     * @return string|array
      */
-    abstract protected function tokenForSearchConsole();
+    abstract protected function tokenForSearchConsole(): array|string;
 }

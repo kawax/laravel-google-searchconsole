@@ -4,12 +4,11 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/74439a91df19143ff593/maintainability)](https://codeclimate.com/github/kawax/laravel-google-searchconsole/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/74439a91df19143ff593/test_coverage)](https://codeclimate.com/github/kawax/laravel-google-searchconsole/test_coverage)
 
-
-https://developers.google.com/webmaster-tools/search-console-api-original/
+https://developers.google.com/webmaster-tools
 
 ## Requirements
-- PHP >= 8.1
-- Laravel >= 10.0
+- PHP >= 8.2
+- Laravel >= 11.0
 
 ## Versioning
 - Basic : semver
@@ -22,23 +21,9 @@ https://developers.google.com/webmaster-tools/search-console-api-original/
 composer require revolution/laravel-google-searchconsole
 ```
 
-This package depends on
-
-- Socialite
-- https://github.com/google/google-api-php-client
-- https://github.com/pulkitjalan/google-apiclient
-
-Google_Service_Webmasters  
-https://github.com/googleapis/google-api-php-client-services/tree/master/src/Google/Service/Webmasters
-
 ### Get API Credentials
 from https://developers.google.com/console  
 Enable `Google Search Console API`.
-
-### publish config file
-```
-php artisan vendor:publish --provider="PulkitJalan\Google\GoogleServiceProvider" --tag="config"
-```
 
 ### config/google.php
 ```php
@@ -70,16 +55,6 @@ GOOGLE_CLIENT_SECRET=
 GOOGLE_REDIRECT=
 ```
 
-## Demo
-https://github.com/kawax/laravel-searchconsole-project
-
-## Usage
-See demo project and docs.
-
-Or another Google API Series.
-- https://github.com/kawax/laravel-google-sheets
-- https://github.com/kawax/laravel-google-photos
-
 ## Query class
 Subclass of Google\Service\Webmasters\SearchAnalyticsQueryRequest.
 
@@ -99,9 +74,13 @@ use Revolution\Google\SearchConsole\Query\AbstractQuery;
 
 class NewQuery extends AbstractQuery
 {
-    public function init()
+    public function init(): void
     {
-        //
+        $this->setStartDate(now()->subMonthWithoutOverflow()->toDateString());
+        $this->setEndDate(now()->toDateString());
+        $this->setDimensions(['query']);
+        $this->setAggregationType(['auto']);
+        $this->setRowLimit(100);
     }
 }
 ```

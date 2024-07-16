@@ -4,5 +4,5 @@ namespace Revolution\Google\SearchConsole\Contracts;
 
 interface Query
 {
-    public function init();
+    public function init(): void;
 }

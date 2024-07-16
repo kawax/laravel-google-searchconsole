@@ -1,9 +1,9 @@
 <?php
 
-namespace Revolution\Google\SearchConsole\Tests;
+namespace Tests;
 
-use PulkitJalan\Google\Facades\Google;
-use PulkitJalan\Google\GoogleServiceProvider;
+use Revolution\Google\Client\Facades\Google;
+use Revolution\Google\Client\Providers\GoogleServiceProvider;
 use Revolution\Google\SearchConsole\Facades\SearchConsole;
 use Revolution\Google\SearchConsole\Providers\SearchConsoleServiceProvider;
 

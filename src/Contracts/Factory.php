@@ -8,42 +8,18 @@ use Google\Service\Webmasters\SearchAnalyticsQueryRequest;
 
 interface Factory
 {
-    /**
-     * @param  string  $url
-     * @param  Query|SearchAnalyticsQueryRequest  $query
-     * @return object
-     */
-    public function query(string $url, $query);
+    public function query(string $url, Query|SearchAnalyticsQueryRequest $query): object;
 
-    /**
-     * @param  Webmasters|Service  $service
-     * @return $this
-     */
-    public function setService($service);
+    public function setService(Webmasters|Service $service): static;
 
-    /**
-     * @return Webmasters
-     */
     public function getService(): Webmasters;
 
     /**
      * set access_token and set new service.
-     *
-     * @param  string|array  $token
-     * @return $this
-     *
-     * @throws \Exception
      */
-    public function setAccessToken($token);
+    public function setAccessToken(array|string $token): static;
 
-    /**
-     * @return array
-     */
-    public function getAccessToken();
+    public function getAccessToken(): array;
 
-    /**
-     * @param  array  $optParams
-     * @return object
-     */
-    public function listSites($optParams = []);
+    public function listSites(array $optParams = []): object;
 }

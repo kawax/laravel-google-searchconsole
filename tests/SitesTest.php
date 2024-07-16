@@ -1,6 +1,6 @@
 <?php
 
-namespace Revolution\Google\SearchConsole\Tests;
+namespace Tests;
 
 use Google\Service\Webmasters;
 use Google\Service\Webmasters\Resource\Sites;
@@ -19,11 +19,11 @@ class SitesTest extends TestCase
     public function testListSites()
     {
         $sc = m::mock(SearchConsoleClient::class)->makePartial()->shouldAllowMockingProtectedMethods();
-        $sc->shouldReceive('serviceSites->listSites->toSimpleObject')->andReturn('test');
+        $sc->shouldReceive('serviceSites->listSites->toSimpleObject')->andReturn((object) ['test' => 'test']);
 
         $sites = $sc->listSites([]);
 
-        $this->assertSame('test', $sites);
+        $this->assertObjectHasProperty('test', $sites);
     }
 
     public function testServiceSites()

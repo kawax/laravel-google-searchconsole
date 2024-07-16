@@ -1,25 +1,26 @@
 <?php
 
-namespace Revolution\Google\SearchConsole\Tests;
+namespace Tests;
 
+use Google\Service\Webmasters;
 use Mockery as m;
-use PulkitJalan\Google\Client;
+use Revolution\Google\Client\GoogleApiClient;
 use Revolution\Google\SearchConsole\Facades\SearchConsole;
 use Revolution\Google\SearchConsole\SearchConsoleClient;
 
 class SearchTest extends TestCase
 {
     /**
-     * @var Client
+     * @var GoogleApiClient
      */
-    protected $google;
+    protected GoogleApiClient $google;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->google = m::mock(Client::class);
-        app()->instance(Client::class, $this->google);
+        $this->google = m::mock(GoogleApiClient::class);
+        app()->instance(GoogleApiClient::class, $this->google);
     }
 
     public function tearDown(): void
@@ -38,11 +39,11 @@ class SearchTest extends TestCase
 
     public function testService()
     {
-        $this->google->shouldReceive('make')->once()->andReturns(m::mock(\Google_Service_Webmasters::class));
+        $this->google->shouldReceive('make')->once()->andReturns(m::mock(Webmasters::class));
 
         SearchConsole::setService($this->google->make('Webmasters'));
 
-        $this->assertInstanceOf(\Google_Service_Webmasters::class, SearchConsole::getService());
+        $this->assertInstanceOf(Webmasters::class, SearchConsole::getService());
     }
 
     public function testSetAccessToken()
@@ -51,23 +52,23 @@ class SearchTest extends TestCase
         $this->google->shouldReceive('setAccessToken')->once();
         $this->google->shouldReceive('isAccessTokenExpired')->once()->andReturns(true);
         $this->google->shouldReceive('fetchAccessTokenWithRefreshToken')->once();
-        $this->google->shouldReceive('make')->once()->andReturns(m::mock(\Google_Service_Webmasters::class));
+        $this->google->shouldReceive('make')->once()->andReturns(m::mock(Webmasters::class));
 
         $sc = SearchConsole::setAccessToken([
-            'access_token'  => 'test',
+            'access_token' => 'test',
             'refresh_token' => 'test',
         ]);
 
-        $this->assertInstanceOf(\Google_Service_Webmasters::class, $sc->getService());
+        $this->assertInstanceOf(Webmasters::class, $sc->getService());
     }
 
     public function testGetAccessToken()
     {
         $sc = m::mock(SearchConsoleClient::class)->makePartial();
-        $sc->shouldReceive('getService->getClient->getAccessToken')->andReturn('token');
+        $sc->shouldReceive('getService->getClient->getAccessToken')->andReturn(['token' => 'test']);
 
         $token = $sc->getAccessToken();
 
-        $this->assertSame('token', $token);
+        $this->assertSame(['token' => 'test'], $token);
     }
 }

@@ -13,7 +13,7 @@ class SearchConsoleServiceProvider extends ServiceProvider implements Deferrable
     /**
      * Boot the service provider.
      */
-    public function boot()
+    public function boot(): void
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
@@ -24,20 +24,16 @@ class SearchConsoleServiceProvider extends ServiceProvider implements Deferrable
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->singleton(Factory::class, SearchConsoleClient::class);
     }
 
     /**
      * Get the services provided by the provider.
-     *
-     * @return string[]
      */
-    public function provides()
+    public function provides(): array
     {
         return [Factory::class];
     }

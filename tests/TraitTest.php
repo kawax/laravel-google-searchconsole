@@ -1,6 +1,6 @@
 <?php
 
-namespace Revolution\Google\SearchConsole\Tests;
+namespace Tests;
 
 use Mockery as m;
 use Revolution\Google\SearchConsole\Concerns\SearchConsole as SearchConsoleTrait;
@@ -29,7 +29,7 @@ class User
 {
     use SearchConsoleTrait;
 
-    public function tokenForSearchConsole()
+    public function tokenForSearchConsole(): array|string
     {
         return 'test';
     }

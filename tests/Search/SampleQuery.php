@@ -1,12 +1,12 @@
 <?php
 
-namespace Revolution\Google\SearchConsole\Tests\Search;
+namespace Tests\Search;
 
 use Revolution\Google\SearchConsole\Query\AbstractQuery;
 
 class SampleQuery extends AbstractQuery
 {
-    public function init()
+    public function init(): void
     {
         $this->setDimensions(['query']);
         $this->setAggregationType(['auto']);

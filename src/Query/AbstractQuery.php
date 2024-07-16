@@ -8,12 +8,12 @@ use Revolution\Google\SearchConsole\Contracts\Query;
 abstract class AbstractQuery extends SearchAnalyticsQueryRequest implements Query
 {
     /**
-     * Google_Model gapiInit().
+     * Google\Model gapiInit().
      */
-    protected function gapiInit()
+    protected function gapiInit(): void
     {
         $this->init();
     }
 
-    abstract public function init();
+    abstract public function init(): void;
 }

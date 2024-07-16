@@ -24,10 +24,8 @@ class User extends Authenticatable
 
     /**
      * Get the Access Token
-     *
-     * @return string|array
      */
-    protected function tokenForSearchConsole()
+    protected function tokenForSearchConsole(): string|array
     {
         return [
             'access_token'  => $this->access_token,
