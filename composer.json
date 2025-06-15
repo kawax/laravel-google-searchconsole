@@ -1,42 +1,66 @@
 {
-  "name": "revolution/laravel-google-searchconsole",
-  "description": "Google SearchConsole API for Laravel",
-  "keywords": [
-    "google",
-    "searchconsole",
-    "laravel"
-  ],
-  "license": "MIT",
-  "require": {
-    "php": "^8.2",
-    "illuminate/support": "^11.0||^12.0",
-    "revolution/laravel-google-sheets": "^7.0"
-  },
-  "require-dev": {
-    "orchestra/testbench": "^10.0",
-    "laravel/pint": "^1.22"
-  },
-  "autoload": {
-    "psr-4": {
-      "Revolution\\Google\\SearchConsole\\": "src/"
+    "name": "revolution/laravel-google-searchconsole",
+    "description": "Google SearchConsole API for Laravel",
+    "keywords": [
+        "google",
+        "searchconsole",
+        "laravel"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "illuminate/support": "^11.0||^12.0",
+        "revolution/laravel-google-sheets": "^7.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^10.0",
+        "laravel/pint": "^1.22"
+    },
+    "autoload": {
+        "psr-4": {
+            "Revolution\\Google\\SearchConsole\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/",
+            "Workbench\\App\\": "workbench/app/",
+            "Workbench\\Database\\Factories\\": "workbench/database/factories/",
+            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
+        }
+    },
+    "authors": [
+        {
+            "name": "kawax",
+            "email": "kawaxbiz@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Revolution\\Google\\SearchConsole\\Providers\\SearchConsoleServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@clear",
+            "@prepare"
+        ],
+        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "build": "@php vendor/bin/testbench workbench:build --ansi",
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "@build",
+            "@php vendor/bin/testbench serve --ansi"
+        ],
+        "lint": [
+            "@php vendor/bin/pint --ansi"
+        ],
+        "test": [
+            "@clear",
+            "@php vendor/bin/phpunit"
+        ]
     }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Tests\\": "tests/"
-    }
-  },
-  "authors": [
-    {
-      "name": "kawax",
-      "email": "kawaxbiz@gmail.com"
-    }
-  ],
-  "extra": {
-    "laravel": {
-      "providers": [
-        "Revolution\\Google\\SearchConsole\\Providers\\SearchConsoleServiceProvider"
-      ]
-    }
-  }
 }
