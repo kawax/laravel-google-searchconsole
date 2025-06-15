@@ -29,8 +29,6 @@ class SearchTest extends TestCase
 
     public function test_instance()
     {
-        $this->google->shouldReceive('make')->once()->andReturns(m::mock(Webmasters::class));
-
         $sc = new SearchConsoleClient;
 
         $this->assertInstanceOf(SearchConsoleClient::class, $sc);
@@ -38,7 +36,7 @@ class SearchTest extends TestCase
 
     public function test_service()
     {
-        $this->google->shouldReceive('make')->twice()->andReturns(m::mock(Webmasters::class));
+        $this->google->shouldReceive('make')->once()->andReturns(m::mock(Webmasters::class));
 
         SearchConsole::setService($this->google->make('Webmasters'));
 
@@ -51,7 +49,7 @@ class SearchTest extends TestCase
         $this->google->shouldReceive('setAccessToken')->once();
         $this->google->shouldReceive('isAccessTokenExpired')->once()->andReturns(true);
         $this->google->shouldReceive('fetchAccessTokenWithRefreshToken')->once();
-        $this->google->shouldReceive('make')->twice()->andReturns(m::mock(Webmasters::class));
+        $this->google->shouldReceive('make')->once()->andReturns(m::mock(Webmasters::class));
 
         $sc = SearchConsole::setAccessToken([
             'access_token' => 'test',
