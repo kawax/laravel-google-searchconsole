@@ -2,10 +2,11 @@ name: test
 
 on:
   push:
-    branches:
-      - master
   pull_request:
-    types: [opened, synchronize]
+
+permissions:
+  id-token: write
+  contents: read
 
 jobs:
   test:
@@ -18,14 +19,14 @@ jobs:
         uses: shivammathur/setup-php@v2 #https://github.com/shivammathur/setup-php
         with:
           php-version: 8.4
-          extensions: mbstring, bcmath
+          extensions: mbstring
           coverage: xdebug
       - name: Install Composer dependencies
-        run: composer install --no-interaction --no-progress  --optimize-autoloader
-      - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v9
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        run: composer install -q
+      - name: Test
+        run: vendor/bin/phpunit
+      - name: Code Coverage
+        uses: qltysh/qlty-action/coverage@v1
         with:
-          coverageCommand: vendor/bin/phpunit
-          coverageLocations: build/logs/clover.xml:clover
+          oidc: true
+          files: build/logs/clover.xml
