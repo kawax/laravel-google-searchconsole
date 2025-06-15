@@ -1,10 +1,11 @@
 <?php
 
-namespace Tests;
+namespace Tests\Feature;
 
 use Mockery as m;
 use Revolution\Google\SearchConsole\Concerns\SearchConsole as SearchConsoleTrait;
 use Revolution\Google\SearchConsole\Facades\SearchConsole;
+use Tests\TestCase;
 
 class TraitTest extends TestCase
 {

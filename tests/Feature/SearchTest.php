@@ -1,12 +1,13 @@
 <?php
 
-namespace Tests;
+namespace Tests\Feature;
 
 use Google\Service\Webmasters;
 use Mockery as m;
 use Revolution\Google\Client\GoogleApiClient;
 use Revolution\Google\SearchConsole\Facades\SearchConsole;
 use Revolution\Google\SearchConsole\SearchConsoleClient;
+use Tests\TestCase;
 
 class SearchTest extends TestCase
 {

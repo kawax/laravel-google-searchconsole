@@ -1,12 +1,13 @@
 <?php
 
-namespace Tests;
+namespace Tests\Feature;
 
 use Google\Service\Webmasters;
 use Google\Service\Webmasters\Resource\Searchanalytics;
 use Mockery as m;
 use Revolution\Google\SearchConsole\SearchConsoleClient;
-use Tests\Search\SampleQuery;
+use Tests\Feature\Search\SampleQuery;
+use Tests\TestCase;
 
 class AnalyticsTest extends TestCase
 {

@@ -1,11 +1,12 @@
 <?php
 
-namespace Tests;
+namespace Tests\Feature;
 
 use Google\Service\Webmasters;
 use Google\Service\Webmasters\Resource\Sites;
 use Mockery as m;
 use Revolution\Google\SearchConsole\SearchConsoleClient;
+use Tests\TestCase;
 
 class SitesTest extends TestCase
 {
