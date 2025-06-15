@@ -315,8 +315,8 @@ class GoogleSearchConsoleController extends Controller
         return Socialite::driver('google')
             ->scopes(config('google.scopes'))
             ->with([
-                        'access_type'     => config('google.access_type'),
-                        'approval_prompt' => config('google.approval_prompt'),
+                'access_type'     => config('google.access_type'),
+                'approval_prompt' => config('google.approval_prompt'),
             ])
             ->redirect();
     }
