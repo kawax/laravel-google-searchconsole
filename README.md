@@ -12,6 +12,19 @@ https://developers.google.com/webmaster-tools
 composer require revolution/laravel-google-searchconsole
 ```
 
+## Configuration
+
+### Supported authentication methods
+
+- **OAuth 2.0**  
+  Recommended for user-based access. Use when you need to access data on behalf of individual Google users.
+
+- **Service Account**  
+  Suitable for server-to-server applications. The service account email must be added as an owner or user in Search Console for each property you want to access.
+
+- **API Key is NOT supported**  
+  Google Search Console API does not support API Key authentication. You must use OAuth 2.0 or a Service Account.
+
 ### Get API Credentials
 from https://developers.google.com/console  
 Enable `Google Search Console API`.
@@ -76,5 +89,15 @@ class NewQuery extends AbstractQuery
 }
 ```
 
+## Basic Usage
+```php
+use Revolution\Google\SearchConsole\Facades\SearchConsole;
+use App\Search\NewQuery;
+
+$query = new NewQuery();
+$result = SearchConsole::setAccessToken($token)
+                       ->query($url, $query);
+```
+
 ## LICENSE
-MIT  
+MIT
