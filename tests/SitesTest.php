@@ -9,14 +9,14 @@ use Revolution\Google\SearchConsole\SearchConsoleClient;
 
 class SitesTest extends TestCase
 {
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         m::close();
 
         parent::tearDown();
     }
 
-    public function testListSites()
+    public function test_list_sites()
     {
         $sc = m::mock(SearchConsoleClient::class)->makePartial()->shouldAllowMockingProtectedMethods();
         $sc->shouldReceive('serviceSites->listSites->toSimpleObject')->andReturn((object) ['test' => 'test']);
@@ -26,7 +26,7 @@ class SitesTest extends TestCase
         $this->assertObjectHasProperty('test', $sites);
     }
 
-    public function testServiceSites()
+    public function test_service_sites()
     {
         $service = m::mock(Webmasters::class);
         $service->sites = m::mock(Sites::class);

@@ -8,18 +8,18 @@ use Revolution\Google\SearchConsole\Facades\SearchConsole;
 
 class TraitTest extends TestCase
 {
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         m::close();
 
         parent::tearDown();
     }
 
-    public function testTrait()
+    public function test_trait()
     {
         SearchConsole::shouldReceive('setAccessToken')->with('test')->once()->andReturn(m::self());
 
-        $sc = (new User())->searchconsole();
+        $sc = (new User)->searchconsole();
 
         $this->assertNotNull($sc);
     }

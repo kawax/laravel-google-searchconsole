@@ -10,9 +10,6 @@ use Revolution\Google\SearchConsole\SearchConsoleClient;
 
 class SearchTest extends TestCase
 {
-    /**
-     * @var GoogleApiClient
-     */
     protected GoogleApiClient $google;
 
     protected function setUp(): void
@@ -23,21 +20,21 @@ class SearchTest extends TestCase
         app()->instance(GoogleApiClient::class, $this->google);
     }
 
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         m::close();
 
         parent::tearDown();
     }
 
-    public function testInstance()
+    public function test_instance()
     {
-        $sc = new SearchConsoleClient();
+        $sc = new SearchConsoleClient;
 
         $this->assertInstanceOf(SearchConsoleClient::class, $sc);
     }
 
-    public function testService()
+    public function test_service()
     {
         $this->google->shouldReceive('make')->once()->andReturns(m::mock(Webmasters::class));
 
@@ -46,7 +43,7 @@ class SearchTest extends TestCase
         $this->assertInstanceOf(Webmasters::class, SearchConsole::getService());
     }
 
-    public function testSetAccessToken()
+    public function test_set_access_token()
     {
         $this->google->shouldReceive('getCache->clear')->once();
         $this->google->shouldReceive('setAccessToken')->once();
@@ -62,7 +59,7 @@ class SearchTest extends TestCase
         $this->assertInstanceOf(Webmasters::class, $sc->getService());
     }
 
-    public function testGetAccessToken()
+    public function test_get_access_token()
     {
         $sc = m::mock(SearchConsoleClient::class)->makePartial();
         $sc->shouldReceive('getService->getClient->getAccessToken')->andReturn(['token' => 'test']);

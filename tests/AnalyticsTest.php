@@ -10,27 +10,27 @@ use Tests\Search\SampleQuery;
 
 class AnalyticsTest extends TestCase
 {
-    public function tearDown(): void
+    protected function tearDown(): void
     {
         m::close();
 
         parent::tearDown();
     }
 
-    public function testQuery()
+    public function test_query()
     {
         $sc = m::mock(SearchConsoleClient::class)->makePartial()->shouldAllowMockingProtectedMethods();
         $sc->shouldReceive('serviceSearchAnalytics->query->toSimpleObject')->andReturn((object) ['test' => 'test']);
 
         $url = '';
-        $query = new SampleQuery();
+        $query = new SampleQuery;
 
         $sites = $sc->query($url, $query);
 
         $this->assertObjectHasProperty('test', $sites);
     }
 
-    public function testServiceSearchAnalytics()
+    public function test_service_search_analytics()
     {
         $service = m::mock(Webmasters::class);
         $service->searchanalytics = m::mock(Searchanalytics::class);
