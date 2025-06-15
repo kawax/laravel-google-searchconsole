@@ -1,19 +1,10 @@
 # Google SearchConsole API for Laravel
 
-[![Build Status](https://travis-ci.com/kawax/laravel-google-searchconsole.svg?token=wkkMzzpvNjzrZivG4aGb&branch=master)](https://travis-ci.com/kawax/laravel-google-searchconsole)
-[![Maintainability](https://api.codeclimate.com/v1/badges/74439a91df19143ff593/maintainability)](https://codeclimate.com/github/kawax/laravel-google-searchconsole/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/74439a91df19143ff593/test_coverage)](https://codeclimate.com/github/kawax/laravel-google-searchconsole/test_coverage)
-
 https://developers.google.com/webmaster-tools
 
 ## Requirements
 - PHP >= 8.2
 - Laravel >= 11.0
-
-## Versioning
-- Basic : semver
-- Drop old PHP or Laravel version : `+0.1`. composer should handle it well.
-- Support only latest major version (`master` branch), but you can PR to old branches.
 
 ## Installation
 
