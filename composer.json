@@ -13,7 +13,8 @@
     "revolution/laravel-google-sheets": "^7.0"
   },
   "require-dev": {
-    "orchestra/testbench": "^9.0"
+    "orchestra/testbench": "^9.0",
+    "laravel/pint": "^1.22"
   },
   "autoload": {
     "psr-4": {
