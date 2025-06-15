@@ -18,6 +18,11 @@ class SearchConsoleClient implements Factory
 
     protected Webmasters $service;
 
+    public function __construct()
+    {
+        $this->setService(Google::make('Webmasters'));
+    }
+
     public function setService(Webmasters|Service $service): static
     {
         $this->service = $service;
