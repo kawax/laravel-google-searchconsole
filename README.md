@@ -313,7 +313,11 @@ class GoogleSearchConsoleController extends Controller
     public function redirectToGoogle()
     {
         return Socialite::driver('google')
-            ->scopes([\Google\Service\Webmasters::WEBMASTERS])
+            ->scopes(config('google.scopes'))
+            ->with([
+                        'access_type'     => config('google.access_type'),
+                        'approval_prompt' => config('google.approval_prompt'),
+            ])
             ->redirect();
     }
     
