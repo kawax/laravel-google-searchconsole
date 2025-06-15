@@ -2,4 +2,4 @@ vendor
 composer.lock
 /build
 .phpunit.result.cache
-/tests/data/
+/tests/Integration/data/
