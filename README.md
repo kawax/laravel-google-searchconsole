@@ -116,7 +116,7 @@ The package automatically uses Service Account authentication when configured th
 ### 3. Environment Variables for Service Account
 
 ```env
-GOOGLE_APPLICATION_NAME=YourAppName
+GOOGLE_SERVICE_ENABLED=true
 GOOGLE_SERVICE_ACCOUNT_JSON_LOCATION=/path/to/service-account.json
 ```
 
