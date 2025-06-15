@@ -10,7 +10,7 @@ class ServiceAccountTest extends TestCase
 {
     public function test_list_sites()
     {
-        $sites = SearchConsole::listSites([]);
+        $sites = SearchConsole::listSites();
 
         $this->assertNotNull($sites);
     }
