@@ -24,7 +24,7 @@
     <testsuite name="Test Suite">
       <directory>tests/Feature</directory>
     </testsuite>
-    <testsuite name="Integration Tests">
+    <testsuite name="Integration">
       <directory>tests/Integration</directory>
     </testsuite>
   </testsuites>
