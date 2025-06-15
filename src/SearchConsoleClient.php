@@ -16,12 +16,7 @@ class SearchConsoleClient implements Factory
 {
     use Macroable;
 
-    protected Webmasters $service;
-
-    public function __construct()
-    {
-        $this->setService(Google::make('Webmasters'));
-    }
+    protected ?Webmasters $service = null;
 
     public function setService(Webmasters|Service $service): static
     {
@@ -32,7 +27,7 @@ class SearchConsoleClient implements Factory
 
     public function getService(): Webmasters
     {
-        return $this->service;
+        return $this->service ?? Google::make('Webmasters');
     }
 
     /**
