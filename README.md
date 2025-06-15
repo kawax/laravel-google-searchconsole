@@ -27,6 +27,11 @@ The package leverages the powerful `revolution/laravel-google-sheets` dependency
 composer require revolution/laravel-google-searchconsole
 ```
 
+### Uninstall
+```
+composer remove revolution//laravel-google-searchconsole
+```
+
 ## Configuration
 
 ### Authentication Methods
