@@ -2,9 +2,23 @@
 
 ## Repository Overview
 
-This repository contains **revolution/laravel-google-searchconsole**, a Laravel package that provides a PHP wrapper for the Google Search Console API. The package simplifies integration with Google's Search Console API, allowing Laravel applications to query search analytics data, manage site properties, and analyze website performance in Google Search.
+This repository contains **invokable/laravel-google-searchconsole**, a Laravel package that provides a PHP wrapper for the Google Search Console API. The package simplifies integration with Google's Search Console API, allowing Laravel applications to query search analytics data, manage site properties, and analyze website performance in Google Search.
 
 **Primary Purpose**: Enable Laravel developers to easily integrate Google Search Console API functionality into their applications with minimal configuration and maximum flexibility.
+
+**Note**: While the GitHub repository is `invokable/laravel-google-searchconsole`, the Composer package name remains `revolution/laravel-google-searchconsole` for compatibility with existing installations.
+
+## Copilot Environment Restrictions
+
+⚠️ **CRITICAL**: The Copilot firewall causes errors when connecting to `www.googleapis.com`
+
+- Google API calls will fail in the Copilot development environment
+- This affects testing and development of Google Search Console functionality
+- GitHub Actions and production environments have no such restrictions
+- **Workaround**: Use mock data or skip API calls when testing in Copilot environment
+- Real API functionality should be tested in GitHub Actions or local development environments
+
+**Note**: All examples and tests should be designed to handle API connectivity failures gracefully when running in restricted environments.
 
 ## Key Technologies & Frameworks
 
@@ -20,6 +34,10 @@ This repository contains **revolution/laravel-google-searchconsole**, a Laravel 
 ```
 ├── .github/                     # GitHub configuration
 │   └── workflows/              # CI/CD pipelines
+├── docs/                       # Documentation
+│   ├── workbench.md            # Workbench development guide
+│   ├── trait.md                # Trait usage documentation
+│   └── macro.md                # Macro functionality docs
 ├── src/                        # Main source code
 │   ├── Commands/               # Artisan commands
 │   │   ├── QueryMakeCommand.php    # Generate query classes
@@ -37,9 +55,17 @@ This repository contains **revolution/laravel-google-searchconsole**, a Laravel 
 │   │   └── AbstractQuery.php       # Base query class
 │   └── SearchConsoleClient.php     # Main client implementation
 ├── tests/                      # Test suite
-│   ├── Search/                 # Example query classes
-│   └── *.php                   # Test files
+│   ├── Feature/                # Feature tests
+│   ├── Integration/            # Integration tests
+│   └── Search/                 # Example query classes
+├── workbench/                  # Orchestra Testbench Workbench
+│   ├── app/                    # Workbench Laravel app
+│   ├── bootstrap/              # Application bootstrap
+│   ├── database/               # Migrations, seeders, factories
+│   ├── routes/                 # Workbench routes
+│   └── resources/              # Views, assets
 ├── composer.json               # Package dependencies
+├── testbench.yaml.example      # Workbench configuration template
 ├── pint.json                   # Code style configuration
 └── phpunit.xml                 # Test configuration
 ```
@@ -196,6 +222,73 @@ class CustomQueryTest extends TestCase
 - Use appropriate row limits to avoid large responses
 - Consider using data state 'final' vs 'fresh' based on needs
 
+## Workbench Development Environment
+
+This package uses **Orchestra Testbench Workbench** for development, providing a complete Laravel application environment for testing and demonstrating package functionality.
+
+### What is Workbench?
+
+Workbench creates a complete Laravel application structure within your package, enabling you to:
+
+- **Test your package in a real Laravel application context**
+- **Develop and preview package functionality interactively**
+- **Create demo applications and examples**
+- **Build comprehensive test suites with realistic scenarios**
+- **Serve your package with a full Laravel application for development**
+
+### Key Workbench Features
+
+1. **Complete Laravel Application**: Full Laravel app structure in `workbench/` directory
+2. **Interactive Development**: Serve the workbench with `composer serve`
+3. **Package Integration**: Your package is automatically loaded and available
+4. **Database Support**: Migrations, seeders, and factories for test data
+5. **Configuration Management**: `testbench.yaml` for environment-specific settings
+
+### Workbench Configuration
+
+Configuration is managed through `testbench.yaml` (not committed to repository):
+
+```bash
+# Copy the example configuration
+cp testbench.yaml.example testbench.yaml
+
+# Customize for your development environment
+```
+
+### Common Workbench Commands
+
+```bash
+# Build the workbench application
+composer build
+
+# Serve the workbench (includes automatic building)
+composer serve
+
+# Clear workbench cache and rebuild
+composer clear && composer build
+
+# Access workbench Laravel app
+# Available at http://localhost:8000 when serving
+```
+
+### Workbench Best Practices
+
+- Keep workbench code separate from package code
+- Use workbench for integration testing and demonstrations
+- Create realistic test scenarios in workbench controllers
+- Utilize workbench seeders for comprehensive test data
+- Document workbench setup for contributors
+
+### Development Workflow with Workbench
+
+1. **Develop**: Write your package code in `src/`
+2. **Configure**: Update `testbench.yaml` with required providers and settings
+3. **Build**: Run `composer build` to create workbench application
+4. **Test**: Use workbench routes and controllers to test functionality
+5. **Iterate**: Make changes and rebuild as needed
+
+*See `docs/workbench.md` for comprehensive workbench documentation and advanced usage patterns.*
+
 ## Common Copilot Workflows
 
 ### Generating Query Classes
@@ -208,6 +301,14 @@ class CustomQueryTest extends TestCase
 2. Use the SearchConsole facade for consistent API access
 3. Implement proper error handling and validation
 4. Add corresponding tests
+5. Test functionality using workbench for integration testing
+
+### Testing with Workbench
+1. Build workbench: `composer build`
+2. Serve workbench: `composer serve`
+3. Create demo routes in `workbench/routes/web.php`
+4. Test package functionality interactively
+5. Use workbench for comprehensive integration testing
 
 ### Debugging API Issues
 1. Check token validity and permissions
@@ -229,9 +330,16 @@ vendor/bin/pint
 
 # Run tests
 vendor/bin/phpunit
+# Or use the composer script
+composer test
 
 # Generate query class
 php artisan make:search:query YourQueryName
+
+# Workbench commands
+composer build           # Build workbench application
+composer serve           # Serve workbench (includes building)
+composer clear           # Clear workbench cache
 ```
 
 ## Contributing Guidelines
@@ -245,4 +353,4 @@ php artisan make:search:query YourQueryName
 
 ---
 
-*This guide helps GitHub Copilot understand the repository structure, patterns, and best practices for contributing to the Laravel Google SearchConsole package.*
+*This guide helps GitHub Copilot understand the repository structure, patterns, and best practices for contributing to the Laravel Google SearchConsole package in the `invokable/laravel-google-searchconsole` repository.*
