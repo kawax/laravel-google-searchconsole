@@ -25,6 +25,7 @@ The package leverages the powerful `revolution/laravel-google-sheets` dependency
 
 ```
 composer require revolution/laravel-google-searchconsole
+php artisan vendor:publish --tag="google-config"
 ```
 
 ### Uninstall
@@ -137,7 +138,6 @@ GOOGLE_SERVICE_ACCOUNT_JSON_LOCATION=/path/to/service-account.json
 'service' => [
     'file' => json_decode(env('GOOGLE_SERVICE_ACCOUNT_JSON_LOCATION', ''), true),
 ],
-'scopes' => [\Google\Service\Webmasters::WEBMASTERS],
 ```
 
 ```env
