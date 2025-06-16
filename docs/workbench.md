@@ -24,9 +24,36 @@ Add Orchestra Testbench to your package's development dependencies:
 composer require --dev orchestra/testbench
 ```
 
-### 2. Configure Composer Autoloading
+### 2. Install Workbench
 
-Update your `composer.json` to include workbench autoloading:
+Use the built-in installation command to set up workbench automatically:
+
+```bash
+# Install workbench (creates directory structure and updates composer.json)
+php vendor/bin/testbench workbench:install
+```
+
+This command will:
+- Create the complete `workbench/` directory structure
+- Automatically update your `composer.json` with the necessary autoload-dev configuration
+- Set up the required composer scripts for workbench development
+
+#### Installation Options
+
+```bash
+# Force overwrite existing files
+php vendor/bin/testbench workbench:install --force
+
+# Skip routes and discovers installation (basic setup)
+php vendor/bin/testbench workbench:install --basic
+
+# Install with DevTool support
+php vendor/bin/testbench workbench:install --devtool
+```
+
+#### Manual Composer Configuration (Alternative)
+
+If you prefer to configure manually or need custom settings, you can update your `composer.json`:
 
 ```json
 {
@@ -57,7 +84,7 @@ Update your `composer.json` to include workbench autoloading:
 
 ### 3. Initialize Workbench
 
-Run the following commands to set up your workbench environment:
+After installation, run the following commands to set up your workbench environment:
 
 ```bash
 # Clear any existing skeleton
