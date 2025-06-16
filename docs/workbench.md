@@ -122,6 +122,7 @@ workbench:
     commands: false
     components: false
     views: false
+    config: true
   build:
     - asset-publish
     - create-sqlite-db
@@ -133,6 +134,21 @@ workbench:
     - laravel-assets
   sync: []
 ```
+
+### Configuration File Management
+
+The `testbench.yaml` file is specified in `.gitignore` and is not included in the repository. This allows developers to have personalized configurations without committing sensitive or environment-specific settings.
+
+To use workbench configuration:
+
+1. Copy the example configuration file:
+   ```bash
+   cp testbench.yaml.example testbench.yaml
+   ```
+
+2. Customize your local `testbench.yaml` file as needed for your development environment
+
+3. The `testbench.yaml.example` file serves as a template and should be committed to the repository to help other developers set up their workbench
 
 ### Configuration Options Explained
 
@@ -165,6 +181,7 @@ migrations:
 - `install`: Whether to run package installation during build
 - `health`: Enable/disable health checks
 - `discovers`: Control Laravel's package auto-discovery features
+  - `config: true`: Load configuration files from `workbench/config/` directory
 
 #### Build Process
 Define commands to run during workbench build:
@@ -341,6 +358,34 @@ use Workbench\App\Http\Controllers\DemoController;
 
 Route::get('/', [DemoController::class, 'index']);
 Route::get('/api/demo', [DemoController::class, 'api']);
+```
+
+### 5. Console Commands
+
+Define custom Artisan commands in `workbench/routes/console.php`:
+
+```php
+<?php
+
+use Illuminate\Foundation\Inspiring;
+use Illuminate\Support\Facades\Artisan;
+use Revolution\Google\SearchConsole\Facades\SearchConsole;
+
+Artisan::command('sc:test', function () {
+    dump(env('GOOGLE_SERVICE_ACCOUNT_JSON_LOCATION'));
+    dump(config('google.service.file'));
+    dump(SearchConsole::listSites());
+});
+```
+
+Run workbench console commands using the testbench command wrapper:
+
+```bash
+# Execute workbench console commands
+php vendor/bin/testbench app:command sc:test
+
+# List all available commands
+php vendor/bin/testbench list
 ```
 
 ## Testing with Workbench
