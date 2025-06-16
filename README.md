@@ -555,5 +555,69 @@ foreach ($result->rows as $row) {
 }
 ```
 
+#### Laravel Helper Functions for Response Handling
+
+The response objects work seamlessly with Laravel's helper functions, making data manipulation more convenient:
+
+**Using `data_get()` for Safe Property Access**
+
+```php
+$result = SearchConsole::query($siteUrl, $query);
+
+// Safely access properties with default values
+$rowCount = data_get($result, 'rowCount', 0);
+$aggregationType = data_get($result, 'responseAggregationType', 'unknown');
+
+// Access nested properties safely
+foreach ($result->rows as $row) {
+    $clicks = data_get($row, 'clicks', 0);
+    $impressions = data_get($row, 'impressions', 0);
+    $ctr = data_get($row, 'ctr', 0.0);
+    $position = data_get($row, 'position', 0.0);
+    
+    // Handle optional or nested properties
+    $firstKey = data_get($row, 'keys.0', 'N/A');
+}
+```
+
+**Using `collect()` for Enhanced Data Processing**
+
+```php
+$result = SearchConsole::query($siteUrl, $query);
+
+// Convert rows to a Laravel Collection for powerful data manipulation
+$rows = collect($result->rows);
+
+// Filter rows with high CTR
+$highCtrRows = $rows->filter(fn($row) => $row->ctr > 0.05);
+
+// Sort by impressions (descending)
+$sortedRows = $rows->sortByDesc('impressions');
+
+// Get top 10 pages by clicks
+$topPages = $rows->sortByDesc('clicks')->take(10);
+
+// Transform data structure
+$pageData = $rows->map(function ($row) {
+    return [
+        'page' => data_get($row, 'keys.0', 'Unknown'),
+        'metrics' => [
+            'clicks' => $row->clicks,
+            'impressions' => $row->impressions,
+            'ctr' => round($row->ctr * 100, 2) . '%',
+            'position' => round($row->position, 1),
+        ]
+    ];
+});
+
+// Group by device type (if querying by device dimension)
+$deviceGroups = $rows->groupBy(fn($row) => data_get($row, 'keys.0', 'unknown'));
+
+// Calculate totals
+$totalClicks = $rows->sum('clicks');
+$totalImpressions = $rows->sum('impressions');
+$averagePosition = $rows->average('position');
+```
+
 ## LICENSE
 MIT
