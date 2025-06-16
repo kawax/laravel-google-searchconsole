@@ -32,3 +32,7 @@ workbench:
     - from: storage
       to: workbench/storage
       reverse: true
+
+env:
+  GOOGLE_SERVICE_ENABLED: true
+  GOOGLE_SERVICE_ACCOUNT_JSON_LOCATION: ''
