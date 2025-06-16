@@ -113,11 +113,36 @@ In Google Cloud Console:
 
 The package automatically uses Service Account authentication when configured through the `laravel-google-sheets` dependency. Place your service account JSON file in your Laravel storage directory.
 
+Even for service accounts, scopes must be set in `config/google.php`:
+
+```php
+'scopes' => [\Google\Service\Webmasters::WEBMASTERS],
+```
+
 ### 3. Environment Variables for Service Account
+
+#### Option 1: Using File Path
 
 ```env
 GOOGLE_SERVICE_ENABLED=true
 GOOGLE_SERVICE_ACCOUNT_JSON_LOCATION=/path/to/service-account.json
+```
+
+#### Option 2: Using JSON String
+
+`GOOGLE_SERVICE_ACCOUNT_JSON_LOCATION` can be an array other than a file path, so you can set it as a JSON string in `.env` and decode it to an array in `config/google.php`.
+
+```php
+// config/google.php
+'service' => [
+    'file' => json_decode(env('GOOGLE_SERVICE_ACCOUNT_JSON_LOCATION', ''), true),
+],
+'scopes' => [\Google\Service\Webmasters::WEBMASTERS],
+```
+
+```env
+// .env
+GOOGLE_SERVICE_ACCOUNT_JSON_LOCATION='{"type": "service_account", "project_id": "your-project", "private_key_id": "...", "private_key": "...", "client_email": "...", "client_id": "...", "auth_uri": "...", "token_uri": "...", "auth_provider_x509_cert_url": "...", "client_x509_cert_url": "..."}'
 ```
 
 ### 4. Add Service Account to Search Console
