@@ -3,3 +3,4 @@ composer.lock
 /build
 .phpunit.result.cache
 /tests/Integration/data/
+testbench.yaml
