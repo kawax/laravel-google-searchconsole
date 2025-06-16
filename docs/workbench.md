@@ -30,7 +30,7 @@ Use the built-in installation command to set up workbench automatically:
 
 ```bash
 # Install workbench (creates directory structure and updates composer.json)
-php vendor/bin/testbench workbench:install
+vendor/bin/testbench workbench:install
 ```
 
 This command will:
@@ -42,13 +42,13 @@ This command will:
 
 ```bash
 # Force overwrite existing files
-php vendor/bin/testbench workbench:install --force
+vendor/bin/testbench workbench:install --force
 
 # Skip routes and discovers installation (basic setup)
-php vendor/bin/testbench workbench:install --basic
+vendor/bin/testbench workbench:install --basic
 
 # Install with DevTool support
-php vendor/bin/testbench workbench:install --devtool
+vendor/bin/testbench workbench:install --devtool
 ```
 
 #### Manual Composer Configuration (Alternative)
@@ -122,6 +122,7 @@ workbench:
     commands: false
     components: false
     views: false
+    config: true
   build:
     - asset-publish
     - create-sqlite-db
@@ -133,6 +134,21 @@ workbench:
     - laravel-assets
   sync: []
 ```
+
+### Configuration File Management
+
+The `testbench.yaml` file is specified in `.gitignore` and is not included in the repository. This allows developers to have personalized configurations without committing sensitive or environment-specific settings.
+
+To use workbench configuration:
+
+1. Copy the example configuration file:
+   ```bash
+   cp testbench.yaml.example testbench.yaml
+   ```
+
+2. Customize your local `testbench.yaml` file as needed for your development environment
+
+3. The `testbench.yaml.example` file serves as a template and should be committed to the repository to help other developers set up their workbench
 
 ### Configuration Options Explained
 
@@ -165,6 +181,7 @@ migrations:
 - `install`: Whether to run package installation during build
 - `health`: Enable/disable health checks
 - `discovers`: Control Laravel's package auto-discovery features
+  - `config: true`: Load configuration files from `workbench/config/` directory
 
 #### Build Process
 Define commands to run during workbench build:
@@ -343,6 +360,31 @@ Route::get('/', [DemoController::class, 'index']);
 Route::get('/api/demo', [DemoController::class, 'api']);
 ```
 
+### 5. Console Commands
+
+Define custom Artisan commands in `workbench/routes/console.php`:
+
+```php
+<?php
+
+use Illuminate\Foundation\Inspiring;
+use Illuminate\Support\Facades\Artisan;
+
+Artisan::command('inspire', function () {
+    $this->comment(Inspiring::quote());
+})->purpose('Display an inspiring quote');
+```
+
+Run workbench console commands using the testbench command wrapper:
+
+```bash
+# Execute workbench console commands
+vendor/bin/testbench inspire
+
+# List all available commands
+vendor/bin/testbench list
+```
+
 ## Testing with Workbench
 
 ### Using WithWorkbench Trait
@@ -445,7 +487,7 @@ composer serve
 
 # Or manually
 composer build
-php vendor/bin/testbench serve
+vendor/bin/testbench serve
 ```
 
 Access your workbench at `http://localhost:8000` (or configured port).
@@ -597,13 +639,13 @@ workbench:
 composer clear && composer prepare && composer build
 
 # Check package discovery
-php vendor/bin/testbench package:discover --ansi
+vendor/bin/testbench package:discover --ansi
 
 # Verify configuration
-php vendor/bin/testbench about
+vendor/bin/testbench about
 
 # Check routes
-php vendor/bin/testbench route:list
+vendor/bin/testbench route:list
 ```
 
 ## Conclusion
