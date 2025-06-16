@@ -30,7 +30,7 @@ Use the built-in installation command to set up workbench automatically:
 
 ```bash
 # Install workbench (creates directory structure and updates composer.json)
-php vendor/bin/testbench workbench:install
+vendor/bin/testbench workbench:install
 ```
 
 This command will:
@@ -42,13 +42,13 @@ This command will:
 
 ```bash
 # Force overwrite existing files
-php vendor/bin/testbench workbench:install --force
+vendor/bin/testbench workbench:install --force
 
 # Skip routes and discovers installation (basic setup)
-php vendor/bin/testbench workbench:install --basic
+vendor/bin/testbench workbench:install --basic
 
 # Install with DevTool support
-php vendor/bin/testbench workbench:install --devtool
+vendor/bin/testbench workbench:install --devtool
 ```
 
 #### Manual Composer Configuration (Alternative)
@@ -369,23 +369,20 @@ Define custom Artisan commands in `workbench/routes/console.php`:
 
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
-use Revolution\Google\SearchConsole\Facades\SearchConsole;
 
-Artisan::command('sc:test', function () {
-    dump(env('GOOGLE_SERVICE_ACCOUNT_JSON_LOCATION'));
-    dump(config('google.service.file'));
-    dump(SearchConsole::listSites());
-});
+Artisan::command('inspire', function () {
+    $this->comment(Inspiring::quote());
+})->purpose('Display an inspiring quote');
 ```
 
 Run workbench console commands using the testbench command wrapper:
 
 ```bash
 # Execute workbench console commands
-php vendor/bin/testbench app:command sc:test
+vendor/bin/testbench inspire
 
 # List all available commands
-php vendor/bin/testbench list
+vendor/bin/testbench list
 ```
 
 ## Testing with Workbench
@@ -490,7 +487,7 @@ composer serve
 
 # Or manually
 composer build
-php vendor/bin/testbench serve
+vendor/bin/testbench serve
 ```
 
 Access your workbench at `http://localhost:8000` (or configured port).
@@ -642,13 +639,13 @@ workbench:
 composer clear && composer prepare && composer build
 
 # Check package discovery
-php vendor/bin/testbench package:discover --ansi
+vendor/bin/testbench package:discover --ansi
 
 # Verify configuration
-php vendor/bin/testbench about
+vendor/bin/testbench about
 
 # Check routes
-php vendor/bin/testbench route:list
+vendor/bin/testbench route:list
 ```
 
 ## Conclusion
