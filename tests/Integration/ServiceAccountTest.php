@@ -44,6 +44,7 @@ class ServiceAccountTest extends TestCase
             if (isset($sites->siteEntry) && is_array($sites->siteEntry)) {
                 foreach ($sites->siteEntry as $site) {
                     $this->assertObjectHasProperty('siteUrl', $site);
+                    dump(strlen($site->siteUrl));
                     $this->assertObjectHasProperty('permissionLevel', $site);
                 }
             }
