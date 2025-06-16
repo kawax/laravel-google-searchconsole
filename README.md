@@ -30,7 +30,7 @@ php artisan vendor:publish --tag="google-config"
 
 ### Uninstall
 ```
-composer remove revolution//laravel-google-searchconsole
+composer remove revolution/laravel-google-searchconsole
 ```
 
 ## Configuration
