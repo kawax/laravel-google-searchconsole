@@ -33,6 +33,10 @@ php artisan vendor:publish --tag="google-config"
 composer remove revolution/laravel-google-searchconsole
 ```
 
+## Sample project
+
+https://github.com/invokable/search-console-project
+
 ## Configuration
 
 ### Authentication Methods
