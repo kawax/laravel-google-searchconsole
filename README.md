@@ -25,6 +25,7 @@ The package leverages the powerful `revolution/laravel-google-sheets` dependency
 
 ```
 composer require revolution/laravel-google-searchconsole
+
 php artisan vendor:publish --tag="google-config"
 ```
 
