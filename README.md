@@ -1,5 +1,8 @@
 # Google SearchConsole API for Laravel
 
+[![Maintainability](https://qlty.sh/badges/9fb434a4-1cd3-4203-af92-efca4ca98a81/maintainability.svg)](https://qlty.sh/gh/invokable/projects/laravel-google-searchconsole)
+[![Code Coverage](https://qlty.sh/badges/9fb434a4-1cd3-4203-af92-efca4ca98a81/test_coverage.svg)](https://qlty.sh/gh/invokable/projects/laravel-google-searchconsole)
+
 https://developers.google.com/webmaster-tools
 
 ## Overview
@@ -23,7 +26,7 @@ The package leverages the powerful `revolution/laravel-google-sheets` dependency
 
 ## Installation
 
-```
+```bash
 composer require revolution/laravel-google-searchconsole
 
 php artisan vendor:publish --tag="google-config"
