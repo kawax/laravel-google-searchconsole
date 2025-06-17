@@ -149,6 +149,8 @@ GOOGLE_SERVICE_ACCOUNT_JSON_LOCATION=/path/to/service-account.json
 GOOGLE_SERVICE_ACCOUNT_JSON_LOCATION='{"type": "service_account", "project_id": "your-project", "private_key_id": "...", "private_key": "...", "client_email": "...", "client_id": "...", "auth_uri": "...", "token_uri": "...", "auth_provider_x509_cert_url": "...", "client_x509_cert_url": "..."}'
 ```
 
+This method is particularly well-suited for GitHub Actions deployment, as it allows the entire service account credentials to be stored as a single secret.
+
 ### 4. Add Service Account to Search Console
 
 1. Go to [Google Search Console](https://search.google.com/search-console)
