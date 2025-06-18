@@ -42,8 +42,10 @@ This repository contains **invokable/laravel-google-searchconsole**, a Laravel p
 │   ├── Commands/               # Artisan commands
 │   │   ├── QueryMakeCommand.php    # Generate query classes
 │   │   └── stubs/query.stub        # Template for query classes
-│   ├── Concerns/               # Traits
-│   │   └── SearchConsole.php       # Model integration trait
+│   ├── Concerns/               # Legacy traits (deprecated)
+│   │   └── SearchConsole.php       # Legacy model integration trait
+│   ├── Traits/                 # Traits
+│   │   └── WithSearchConsole.php   # Model integration trait
 │   ├── Contracts/              # Interfaces
 │   │   ├── Factory.php             # Main service contract
 │   │   └── Query.php               # Query interface
@@ -77,6 +79,7 @@ This repository contains **invokable/laravel-google-searchconsole**, a Laravel p
 - **SearchConsole.php (Facade)**: Main entry point for the package
 - **SearchConsoleServiceProvider.php**: Laravel service registration
 - **QueryMakeCommand.php**: Artisan command for generating query classes
+- **WithSearchConsole.php**: Model integration trait
 
 ## Coding Conventions & Best Practices
 
@@ -97,7 +100,7 @@ This repository contains **invokable/laravel-google-searchconsole**, a Laravel p
 - **Service Provider Pattern**: Laravel service container integration
 - **Abstract Factory Pattern**: Query creation and management
 - **Command Pattern**: Artisan commands for code generation
-- **Trait Pattern**: Model integration via `SearchConsole` trait
+- **Trait Pattern**: Model integration via `WithSearchConsole` trait
 
 ### Authentication Handling
 - OAuth 2.0 tokens: `['access_token' => '...', 'refresh_token' => '...']`
@@ -138,11 +141,11 @@ class TopPagesQuery extends AbstractQuery
 
 **Expected Pattern**:
 ```php
-use Revolution\Google\SearchConsole\Concerns\SearchConsole;
+use Revolution\Google\SearchConsole\Traits\WithSearchConsole;
 
 class User extends Model
 {
-    use SearchConsole;
+    use WithSearchConsole;
     
     protected function tokenForSearchConsole(): array|string
     {
