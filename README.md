@@ -2,6 +2,7 @@
 
 [![Maintainability](https://qlty.sh/badges/9fb434a4-1cd3-4203-af92-efca4ca98a81/maintainability.svg)](https://qlty.sh/gh/invokable/projects/laravel-google-searchconsole)
 [![Code Coverage](https://qlty.sh/badges/9fb434a4-1cd3-4203-af92-efca4ca98a81/test_coverage.svg)](https://qlty.sh/gh/invokable/projects/laravel-google-searchconsole)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/invokable/laravel-google-searchconsole)
 
 https://developers.google.com/webmaster-tools
 
