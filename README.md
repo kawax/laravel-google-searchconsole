@@ -356,7 +356,7 @@ class GoogleSearchConsoleController extends Controller
             ->scopes(config('google.scopes'))
             ->with([
                 'access_type'     => config('google.access_type'),
-                'approval_prompt' => config('google.approval_prompt'),
+                'prompt' => config('google.prompt'),
             ])
             ->redirect();
     }
@@ -393,7 +393,7 @@ class GoogleSearchConsoleController extends Controller
 
 #### 2. Using OAuth with Model Integration
 
-You can use the `SearchConsole` trait to integrate Search Console functionality directly into your models:
+You can use the `WithSearchConsole` trait to integrate Search Console functionality directly into your models:
 
 ```php
 <?php
@@ -401,11 +401,11 @@ You can use the `SearchConsole` trait to integrate Search Console functionality 
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Revolution\Google\SearchConsole\Concerns\SearchConsole;
+use Revolution\Google\SearchConsole\Traits\WithSearchConsole;
 
 class User extends Authenticatable
 {
-    use SearchConsole;
+    use WithSearchConsole;
     
     protected $fillable = [
         'name', 'email', 'google_access_token', 'google_refresh_token'

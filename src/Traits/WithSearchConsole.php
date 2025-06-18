@@ -1,18 +1,15 @@
 <?php
 
-namespace Revolution\Google\SearchConsole\Concerns;
+namespace Revolution\Google\SearchConsole\Traits;
 
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Revolution\Google\SearchConsole\Contracts\Factory;
-use Revolution\Google\SearchConsole\Traits\WithSearchConsole;
 
 /**
- * We recommend using {@link WithSearchConsole} for consistency with other related Google API packages, but will keep it for compatibility.
- *
- * @deprecated Use {@link WithSearchConsole} instead.
+ * use at User or another model.
  */
-trait SearchConsole
+trait WithSearchConsole
 {
     /**
      * @throws BindingResolutionException
@@ -26,8 +23,6 @@ trait SearchConsole
 
     /**
      * Get the Access Token.
-     *
-     * @deprecated Use {@link WithSearchConsole} instead.
      */
     abstract protected function tokenForSearchConsole(): array|string;
 }

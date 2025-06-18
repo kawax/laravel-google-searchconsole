@@ -3,7 +3,7 @@
 namespace Tests\Feature;
 
 use Mockery as m;
-use Revolution\Google\SearchConsole\Concerns\SearchConsole as SearchConsoleTrait;
+use Revolution\Google\SearchConsole\Traits\WithSearchConsole;
 use Revolution\Google\SearchConsole\Facades\SearchConsole;
 use Tests\TestCase;
 
@@ -28,7 +28,7 @@ class TraitTest extends TestCase
 
 class User
 {
-    use SearchConsoleTrait;
+    use WithSearchConsole;
 
     public function tokenForSearchConsole(): array|string
     {

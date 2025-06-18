@@ -1,6 +1,6 @@
-# SearchConsole Trait
+# WithSearchConsole Trait
 
-Add `SearchConsole` trait to User model.
+Add `WithSearchConsole` trait to User model.
 
 ```php
 <?php
@@ -10,12 +10,12 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-use Revolution\Google\SearchConsole\Concerns\SearchConsole;
+use Revolution\Google\SearchConsole\Traits\WithSearchConsole;
 
 class User extends Authenticatable
 {
     use Notifiable;
-    use SearchConsole;
+    use WithSearchConsole;
 
     protected $dates = [
         'created_at',
@@ -57,7 +57,7 @@ Trait has `searchconsole()` that returns `SearchConsole` instance.
 ## Already searchconsole() exists
 
 ```php
-use SearchConsole {
-    SearchConsole::searchconsole as sc;
+use WithSearchConsole {
+    WithSearchConsole::searchconsole as sc;
 }
 ```
