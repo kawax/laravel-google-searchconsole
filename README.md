@@ -96,7 +96,6 @@ Add to `config/google.php`:
 'redirect_uri'     => env('GOOGLE_REDIRECT_URI'),
 'scopes'           => [\Google\Service\Webmasters::WEBMASTERS],
 'access_type'      => 'offline',
-'approval_prompt'  => 'force',
 'prompt'           => 'consent',
 ```
 
