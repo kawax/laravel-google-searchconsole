@@ -3,8 +3,8 @@
 namespace Tests\Feature;
 
 use Mockery as m;
-use Revolution\Google\SearchConsole\Traits\WithSearchConsole;
 use Revolution\Google\SearchConsole\Facades\SearchConsole;
+use Revolution\Google\SearchConsole\Traits\WithSearchConsole;
 use Tests\TestCase;
 
 class TraitTest extends TestCase
