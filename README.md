@@ -96,7 +96,7 @@ Add to `config/google.php`:
 'redirect_uri'     => env('GOOGLE_REDIRECT_URI'),
 'scopes'           => [\Google\Service\Webmasters::WEBMASTERS],
 'access_type'      => 'offline',
-'prompt'           => 'consent',
+'prompt'           => 'consent select_account',
 ```
 
 ### 4. Environment Variables for OAuth
